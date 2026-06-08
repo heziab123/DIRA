@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>מחשבון רכישת דירה</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">תכנון רכישה</p>
+          <h1 id="page-title">מחשבון רכישת דירה</h1>
+          <p class="intro">חשב הון עצמי, החזר משכנתא, הוצאות נלוות ועלות לכל רוכש לפי הנתונים שלך.</p>
+        </div>
+        <div class="hero-total">
+          <span>סה"כ עלות לכל רוכש</span>
+          <strong id="total-per-buyer-top">₪0</strong>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="סיכום">
+        <article class="metric">
+          <span>הון עצמי נדרש</span>
+          <strong id="required-equity">₪0</strong>
+        </article>
+        <article class="metric">
+          <span>הון עצמי לכל רוכש</span>
+          <strong id="equity-per-buyer">₪0</strong>
+        </article>
+        <article class="metric">
+          <span>סה"כ החזר משכנתא</span>
+          <strong id="mortgage-total">₪0</strong>
+        </article>
+        <article class="metric">
+          <span>סה"כ עלות</span>
+          <strong id="total-cost">₪0</strong>
+        </article>
+      </section>
+
+      <form class="calculator" id="calculator">
+        <section class="panel" aria-labelledby="purchase-title">
+          <div class="section-heading">
+            <h2 id="purchase-title">נתוני רכישה</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>מחיר דירה מלא</span>
+              <input type="range" id="full-price" min="800000" max="1500000" step="10000" value="1000000">
+              <output for="full-price" id="full-price-output">₪1,000,000</output>
+            </label>
+
+            <label class="field">
+              <span>תיווך</span>
+              <input type="range" id="brokerage" min="12000" max="28000" step="500" value="18000">
+              <output for="brokerage" id="brokerage-output">₪18,000</output>
+            </label>
+
+            <div class="field calculated-field">
+              <span>הצעה כולל תיווך</span>
+              <output id="offer-with-brokerage-output">₪1,018,000</output>
+            </div>
+
+            <label class="field">
+              <span>אחוז הון עצמי</span>
+              <input type="range" id="equity-percent" min="0" max="100" step="1" value="25">
+              <output for="equity-percent" id="equity-percent-output">25%</output>
+            </label>
+
+            <label class="field">
+              <span>כמות רוכשים</span>
+              <input type="range" id="buyers" min="1" max="6" step="1" value="2">
+              <output for="buyers" id="buyers-output">2</output>
+            </label>
+
+            <label class="field">
+              <span>החזר משכנתא ל-100 אש"ח</span>
+              <input type="range" id="mortgage-per-100k" min="500" max="600" step="5" value="550">
+              <output for="mortgage-per-100k" id="mortgage-per-100k-output">₪550</output>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="expenses-title">
+          <div class="section-heading">
+            <h2 id="expenses-title">הוצאות נלוות</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>עורך דין</span>
+              <input type="range" id="lawyer" min="500" max="15000" step="500" value="5000">
+              <output for="lawyer" id="lawyer-output">₪5,000</output>
+            </label>
+
+            <label class="field">
+              <span>שיפוץ</span>
+              <input type="range" id="renovation" min="500" max="15000" step="500" value="5000">
+              <output for="renovation" id="renovation-output">₪5,000</output>
+            </label>
+
+            <label class="field">
+              <span>הוצאה נוספת</span>
+              <input type="range" id="extra-expense" min="500" max="15000" step="500" value="5000">
+              <output for="extra-expense" id="extra-expense-output">₪5,000</output>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel results" aria-labelledby="results-title">
+          <div class="section-heading">
+            <h2 id="results-title">פירוט חישוב</h2>
+          </div>
+
+          <dl class="result-list">
+            <div>
+              <dt>הון עצמי נדרש</dt>
+              <dd id="required-equity-detail">₪0</dd>
+            </div>
+            <div>
+              <dt>הון עצמי נדרש לכל רוכש</dt>
+              <dd id="equity-per-buyer-detail">₪0</dd>
+            </div>
+            <div>
+              <dt>סה"כ החזר משכנתא</dt>
+              <dd id="mortgage-total-detail">₪0</dd>
+            </div>
+            <div>
+              <dt>סה"כ הוצאות נלוות</dt>
+              <dd id="expenses-total">₪0</dd>
+            </div>
+            <div class="highlight">
+              <dt>סה"כ עלות</dt>
+              <dd id="total-cost-detail">₪0</dd>
+            </div>
+            <div class="highlight">
+              <dt>סה"כ עלות לכל רוכש</dt>
+              <dd id="total-per-buyer">₪0</dd>
+            </div>
+          </dl>
+        </section>
+      </form>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
