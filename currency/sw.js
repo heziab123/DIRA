@@ -1,6 +1,6 @@
 // Keeps the app shell cached so the converter opens without internet.
 // Bump the version when changing the file list.
-const CACHE = "currency-v1";
+const CACHE = "currency-v2";
 const ASSETS = [
   "./",
   "./index.html",
