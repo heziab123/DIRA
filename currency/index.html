@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>המרת מטבעות</title>
+    <meta name="description" content="המרה בין שקל, יורו, ליי רומני ודולר עם מחשבון — עובד גם בלי אינטרנט.">
+    <meta name="theme-color" content="#1f6fd1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="מטבעות">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1>המרת מטבעות</h1>
+        <button class="rates-chip" id="rates-button" type="button" aria-haspopup="dialog">
+          <span class="net-dot" id="net-dot" aria-hidden="true"></span>
+          <span id="rates-chip-text">שערים</span>
+        </button>
+      </header>
+
+      <section class="currency-list" aria-label="מטבעות">
+        <button class="currency" type="button" data-code="ILS">
+          <span class="badge" aria-hidden="true">₪</span>
+          <span class="label"><strong>שקל</strong><small>ILS</small></span>
+          <span class="amount" dir="ltr"><small class="expr"></small><span class="value">0</span></span>
+        </button>
+        <button class="currency" type="button" data-code="EUR">
+          <span class="badge" aria-hidden="true">€</span>
+          <span class="label"><strong>יורו</strong><small>EUR</small></span>
+          <span class="amount" dir="ltr"><small class="expr"></small><span class="value">0</span></span>
+        </button>
+        <button class="currency" type="button" data-code="RON">
+          <span class="badge badge-text" aria-hidden="true">lei</span>
+          <span class="label"><strong>ליי רומני</strong><small>RON</small></span>
+          <span class="amount" dir="ltr"><small class="expr"></small><span class="value">0</span></span>
+        </button>
+        <button class="currency" type="button" data-code="USD">
+          <span class="badge" aria-hidden="true">$</span>
+          <span class="label"><strong>דולר</strong><small>USD</small></span>
+          <span class="amount" dir="ltr"><small class="expr"></small><span class="value">0</span></span>
+        </button>
+      </section>
+
+      <p class="hint">הקישו על מטבע כדי להקליד בו סכום או תרגיל</p>
+
+      <section class="keypad" dir="ltr" aria-label="מקלדת מחשבון">
+        <button type="button" class="key key-fn" data-key="clear">C</button>
+        <button type="button" class="key key-fn" data-key="back" aria-label="מחיקה">⌫</button>
+        <button type="button" class="key key-op" data-key="/" aria-label="חילוק">÷</button>
+        <button type="button" class="key key-op" data-key="*" aria-label="כפל">×</button>
+        <button type="button" class="key" data-key="7">7</button>
+        <button type="button" class="key" data-key="8">8</button>
+        <button type="button" class="key" data-key="9">9</button>
+        <button type="button" class="key key-op" data-key="-" aria-label="חיסור">−</button>
+        <button type="button" class="key" data-key="4">4</button>
+        <button type="button" class="key" data-key="5">5</button>
+        <button type="button" class="key" data-key="6">6</button>
+        <button type="button" class="key key-op" data-key="+" aria-label="חיבור">+</button>
+        <button type="button" class="key" data-key="1">1</button>
+        <button type="button" class="key" data-key="2">2</button>
+        <button type="button" class="key" data-key="3">3</button>
+        <button type="button" class="key key-equals" data-key="=" aria-label="שווה">=</button>
+        <button type="button" class="key key-zero" data-key="0">0</button>
+        <button type="button" class="key" data-key=".">.</button>
+      </section>
+    </main>
+
+    <dialog class="rates-dialog" id="rates-dialog" aria-labelledby="rates-title">
+      <div class="sheet">
+        <div class="sheet-heading">
+          <h2 id="rates-title">שערי המרה</h2>
+          <button type="button" class="close-button" id="rates-close" aria-label="סגירה">✕</button>
+        </div>
+        <p class="rates-meta" id="rates-meta"></p>
+
+        <div class="rate-list">
+          <label class="rate-row">
+            <span class="rate-name">1 יורו =</span>
+            <input type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-rate="EUR">
+            <span class="rate-unit">₪</span>
+          </label>
+          <label class="rate-row">
+            <span class="rate-name">1 ליי רומני =</span>
+            <input type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-rate="RON">
+            <span class="rate-unit">₪</span>
+          </label>
+          <label class="rate-row">
+            <span class="rate-name">1 דולר =</span>
+            <input type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-rate="USD">
+            <span class="rate-unit">₪</span>
+          </label>
+        </div>
+        <p class="rates-note">אפשר לשנות שער ידנית (למשל לפי השער בצ'יינג') — השינוי נשמר במכשיר.</p>
+
+        <button type="button" class="primary-button" id="refresh-rates">עדכון שערים מהאינטרנט</button>
+        <p class="refresh-status" id="refresh-status" role="status"></p>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
